@@ -1,5 +1,6 @@
 import argparse
 
+from credentials import username, password
 from mastodon import Mastodon
 from datetime import date
 
@@ -17,10 +18,7 @@ def login():
         client_id=clientCredentialsFile,
         api_base_url=apiBaseUrl)
     version = mastodon.retrieve_mastodon_version()
-    mastodon.log_in(
-        username='marv42+calvinandhobbes@gmail.com',
-        password='C4lv1nH08835M4rvaz!%',
-        to_file=userCredentialsFile)
+    mastodon.log_in(username, password, to_file=userCredentialsFile)
 
 
 def get_instance():
