@@ -34,10 +34,9 @@ def toot_random():
 
 def toot_daily():
     mastodon = get_instance()
-    year = date.today().year
-    month = date.today().month
-    day = date.today().day - 1
-    mastodon.toot(f'daily comic:\nhttps://www.gocomics.com/calvinandhobbes/{year}/{month}/{day}')
+    today = date.today()
+    yesterday = today.day - 1  # because of time zone differences
+    mastodon.toot(f'daily comic:\nhttps://www.gocomics.com/calvinandhobbes/{today.year}/{today.month}/{yesterday}')
 
 
 clientName = 'pytooterappcalvinandhobbes'
