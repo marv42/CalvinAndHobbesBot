@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # call this from cron.hourly
 
