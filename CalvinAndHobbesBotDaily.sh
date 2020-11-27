@@ -1,3 +1,3 @@
 #!/bin/sh
 
-python3.8 CalvinAndHobbesBot.py
+python3 CalvinAndHobbesBot.py
