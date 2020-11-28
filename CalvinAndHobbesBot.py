@@ -2,7 +2,7 @@ import argparse
 
 from credentials import username, password
 from mastodon import Mastodon
-from datetime import date
+from datetime import date, timedelta
 
 
 # def register():
@@ -34,9 +34,9 @@ def toot_random():
 
 def toot_daily():
     mastodon = get_instance()
-    today = date.today()
-    yesterday = today.day - 1  # because of time zone differences
-    mastodon.toot(f'daily comic:\nhttps://www.gocomics.com/calvinandhobbes/{today.year}/{today.month}/{yesterday}')
+    yesterday = date.today() - timedelta(days=1)  # because of time zone differences
+    mastodon.toot(
+        f"daily comic:\nhttps://www.gocomics.com/calvinandhobbes/{yesterday.year}/{yesterday.month}/{yesterday.day}")
 
 
 clientName = 'pytooterappcalvinandhobbes'
