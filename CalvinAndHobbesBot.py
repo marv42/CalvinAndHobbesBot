@@ -1,6 +1,6 @@
 import argparse
 
-from credentials import username, password
+from credentials import username, password, clientId, clientSecret
 from mastodon import Mastodon
 from datetime import date, timedelta
 
@@ -15,7 +15,8 @@ from datetime import date, timedelta
 
 def login():
     mastodon = Mastodon(
-        client_id=clientCredentialsFile,
+        client_id=clientId,  # TODO client_id=clientCredentialsFile,
+        client_secret=clientSecret,
         api_base_url=apiBaseUrl)
     version = mastodon.retrieve_mastodon_version()
     mastodon.log_in(username, password, to_file=userCredentialsFile)
