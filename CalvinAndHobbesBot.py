@@ -1,4 +1,5 @@
 import argparse
+import urllib
 
 from credentials import username, password, clientId, clientSecret
 from mastodon import Mastodon
@@ -29,8 +30,9 @@ def get_instance():
 
 
 def toot_random():
+    url = urllib.request.urlopen('https://www.gocomics.com/random/calvinandhobbes').geturl()
     mastodon = get_instance()
-    mastodon.toot('random comic:\nhttps://www.gocomics.com/random/calvinandhobbes')
+    mastodon.toot(f"random comic:\n{url}")
 
 
 def toot_daily():
