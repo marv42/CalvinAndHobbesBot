@@ -1,17 +1,16 @@
 import argparse
-import urllib
+import urllib.request
 
 from credentials import username, password, clientId, clientSecret
 from mastodon import Mastodon
 from datetime import date, timedelta
 
 
-# def register():
-#     """This only needs to be done once"""
-#     Mastodon.create_app(
-#         clientName,
-#         api_base_url=apiBaseUrl,
-#         to_file=clientCredentialsFile)
+def register():
+    Mastodon.create_app(
+        clientName,
+        api_base_url=apiBaseUrl,
+        to_file=clientCredentialsFile)
 
 
 def login():
@@ -30,9 +29,9 @@ def get_instance():
 
 
 def toot_random():
-    url = urllib.request.urlopen('https://www.gocomics.com/random/calvinandhobbes').geturl()
     mastodon = get_instance()
-    mastodon.toot(f"random comic:\n{url}")
+    url = urllib.request.urlopen('https://www.gocomics.com/random/calvinandhobbes').geturl()
+    mastodon.toot(f"random #CalvinAndHobbes comic:\n{url}")
 
 
 def toot_daily():
@@ -40,7 +39,7 @@ def toot_daily():
     today = date.today()
     # yesterday = today - timedelta(days=1)  # because of time zone differences
     mastodon.toot(
-        f"daily comic:\nhttps://www.gocomics.com/calvinandhobbes/{today.year}/{today.month}/{today.day}")
+        f"daily #CalvinAndHobbes comic:\nhttps://www.gocomics.com/calvinandhobbes/{today.year}/{today.month}/{today.day}")
 
 
 clientName = 'pytooterappcalvinandhobbes'
@@ -56,6 +55,7 @@ def parse_args():
 
 
 if __name__ == '__main__':
+    # register()  # this only needs to be done once
     login()
     args = parse_args()
     if args.random:
