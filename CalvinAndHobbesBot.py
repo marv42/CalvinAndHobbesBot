@@ -62,3 +62,4 @@ if __name__ == '__main__':
         toot_random()
     else:
         toot_daily()
+    Mastodon.revoke_access_token()
